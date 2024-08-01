@@ -1,0 +1,28 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = new1.o
+LINKOBJ  = new1.o
+LIBS     = -L"E:/MinGW/lib" -L"E:/MinGW/mingw32/lib" -static-libstdc++ -static-libgcc
+INCS     = -I"E:/MinGW/include" -I"E:/MinGW/lib/gcc/mingw32/8.2.0/include"
+CXXINCS  = -I"E:/MinGW/include" -I"E:/MinGW/lib/gcc/mingw32/8.2.0/include" -I"E:/MinGW/lib/gcc/mingw32/8.2.0/include/c++"
+BIN      = Project1.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+new1.o: new1.cpp
+	$(CPP) -c new1.cpp -o new1.o $(CXXFLAGS)
